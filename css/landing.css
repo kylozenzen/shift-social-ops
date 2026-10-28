@@ -1,5 +1,14 @@
 /* Shift landing page (waitlist). Reuses dashboard classes from app.css inside mockups. */
-body.lp { background: var(--paper, #F4F6FA); color: var(--ink, #172338); font-family: 'Schibsted Grotesk', system-ui, sans-serif; margin: 0; }
+/* Fixed light palette for the landing page. Overrides app.css dark-mode variables. */
+body.lp, html:has(body.lp) {
+  color-scheme: light;
+  --ink: #172338; --paper: #F4F6FA; --surface: #FFFFFF; --line: #DDE3EE;
+  --muted: #5B6B84; --sky: #3BA5DB; --sky-deep: #0B6E9E;
+  --red: #B3222A; --red-bg: #FDE8E8; --amber: #8A5200;
+  --amber-bg: #FFF6E0; --amber-line: #F2C96B;
+  --green: #1C6E46; --green-bg: #E2F4EA;
+}
+body.lp { background: #F4F6FA; color: #172338; font-family: 'Schibsted Grotesk', system-ui, sans-serif; margin: 0; }
 body.lp * { box-sizing: border-box; }
 .lp main { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 .lp img { max-width: 100%; }
