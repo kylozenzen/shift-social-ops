@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shift</title>
+  <meta name="description" content="Your social team shouldn't be the last to know.">
+  <meta name="theme-color" content="#172338">
+  <link rel="icon" href="/icons/shift.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/shift-180.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img class="brand-mark" src="/icons/shift.svg" alt=""><span>Shift</span></div>
+    <div class="team-switch">
+      <label class="sr-only" for="orgSelect">Workspace</label>
+      <select id="orgSelect"></select>
+    </div>
+    <div class="spacer"></div>
+    <div class="channel-stack hide-sm" id="channelStack" aria-label="Connected channels"></div>
+    <button class="btn hide-sm" id="refreshBtn" type="button">Refresh</button>
+    <button class="btn btn-sky" id="reportBtn" type="button"><span class="long">Report something</span><span class="short">Report</span></button>
+    <button class="btn icon-btn" id="settingsBtn" type="button" aria-label="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
+  </header>
+
+  <main class="shell">
+    <div class="status-line">
+      <h1 id="headline">Loading your day…</h1>
+      <p id="subline"></p>
+    </div>
+    <div id="banners"></div>
+
+    <section class="setup" id="setupCard" hidden aria-labelledby="setupTitle">
+      <div class="setup-head">
+        <h2 id="setupTitle">Get Shift ready</h2>
+        <span class="setup-progress" id="setupProgress"></span>
+        <span class="spacer"></span>
+        <button class="btn btn-sm btn-quiet" type="button" id="setupHide">Hide setup</button>
+      </div>
+      <ol class="setup-steps" id="setupSteps"></ol>
+    </section>
+
+    <div class="board" id="board" data-tab="inbox">
+      <div class="col">
+        <section class="panel" data-pane="inbox" aria-labelledby="inboxTitle">
+          <div class="panel-head">
+            <h2 id="inboxTitle">From the team</h2>
+            <span class="count" id="inboxCount"></span>
+            <span class="spacer"></span>
+          </div>
+          <div class="filter-row" role="group" aria-label="Filter">
+            <button class="chip-btn" type="button" data-filter="open" aria-pressed="true">Open</button>
+            <button class="chip-btn" type="button" data-filter="issue" aria-pressed="false">Issues</button>
+            <button class="chip-btn" type="button" data-filter="idea" aria-pressed="false">Ideas</button>
+            <button class="chip-btn" type="button" data-filter="closed" aria-pressed="false">Done</button>
+          </div>
+          <div class="panel-body" id="inboxList"></div>
+        </section>
+
+        <section class="panel" data-pane="notes" aria-labelledby="notesTitle">
+          <div class="panel-head">
+            <h2 id="notesTitle">Notes for next shift</h2>
+            <span class="spacer"></span>
+            <button class="btn btn-sm" id="handoffBtn" type="button">Copy handoff</button>
+          </div>
+          <div class="panel-body">
+            <div id="notesList"></div>
+            <form class="quick-note" id="quickNote">
+              <label class="sr-only" for="quickNoteText">Leave a note</label>
+              <input type="text" id="quickNoteText" placeholder="Schedule the CEO post at 5…" maxlength="500" autocomplete="off">
+              <button class="btn btn-primary" type="submit">Leave note</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel" data-pane="notes" aria-labelledby="activityTitle">
+          <div class="panel-head"><h2 id="activityTitle">What happened today</h2></div>
+          <div class="panel-body"><ul class="activity" id="activityList"></ul></div>
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="panel" data-pane="schedule" aria-labelledby="schedTitle">
+          <div class="panel-head">
+            <h2 id="schedTitle">Going out</h2>
+            <span class="count" id="schedCount"></span>
+            <span class="spacer"></span>
+            <button class="btn btn-sm" id="composeBtn" type="button">New post</button>
+          </div>
+          <div class="panel-body">
+            <div id="todayBlock"></div>
+            <div id="weekBlock"></div>
+            <div id="pulledBlock"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button type="button" role="tab" data-tab="inbox" aria-selected="true">Inbox <span id="tabInboxCount"></span></button>
+    <button type="button" role="tab" data-tab="schedule" aria-selected="false">Schedule</button>
+    <button type="button" role="tab" data-tab="notes" aria-selected="false">Notes</button>
+  </nav>
+
+  <!-- Report something -->
+  <dialog id="reportDlg" aria-labelledby="reportTitle">
+    <form method="dialog" id="reportForm">
+      <div class="dlg-head"><h2 id="reportTitle">Report something</h2><button class="btn btn-quiet" value="cancel" formnovalidate>Close</button></div>
+      <div class="dlg-body">
+        <div class="field">
+          <span>What is it?</span>
+          <div class="choice-row" id="reportTypes">
+            <label><input type="radio" name="type" value="issue" checked> Issue</label>
+            <label><input type="radio" name="type" value="update"> Update</label>
+            <label><input type="radio" name="type" value="idea"> Content idea</label>
+            <label><input type="radio" name="type" value="request"> Request</label>
+            <label><input type="radio" name="type" value="note"> Note for next shift</label>
+          </div>
+        </div>
+        <label class="field"><span>What's going on?</span>
+          <textarea name="text" required maxlength="2000" placeholder="The train is down until at least 3pm."></textarea>
+        </label>
+        <label class="field" id="reportDueField" hidden><span>Needs doing by (optional)</span>
+          <input type="datetime-local" name="dueAt">
+        </label>
+        <div class="choice-row"><label><input type="checkbox" name="urgent"> Urgent</label></div>
+      </div>
+      <div class="dlg-foot">
+        <button class="btn" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn btn-primary" id="reportSubmit" value="default">Add to inbox</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Uplink composer -->
+  <dialog id="composeDlg" aria-labelledby="composeTitle">
+    <div class="dlg-head"><h2 id="composeTitle">Post an update</h2><button class="btn btn-quiet" type="button" data-close>Close</button></div>
+    <div id="composeStep1">
+      <div class="dlg-body">
+        <div class="context-box" id="composeContext" hidden></div>
+        <div class="field"><span>Post to</span><div class="ch-pick" id="composeChannels"></div></div>
+        <label class="field"><span>Message</span>
+          <textarea id="composeText" maxlength="3000"></textarea>
+          <div class="counter" id="composeCounter"></div>
+        </label>
+        <div class="field">
+          <span>When</span>
+          <div class="choice-row" id="composeWhen">
+            <label><input type="radio" name="when" value="shareNow" checked> Publish now</label>
+            <label><input type="radio" name="when" value="addToQueue"> Add to queue</label>
+            <label><input type="radio" name="when" value="customScheduled"> Pick a time</label>
+            <label><input type="radio" name="when" value="draft"> Save as draft</label>
+          </div>
+        </div>
+        <label class="field" id="composeTimeField" hidden><span>Time</span><input type="datetime-local" id="composeTime"></label>
+      </div>
+      <div class="dlg-foot">
+        <button class="btn" type="button" data-close>Cancel</button>
+        <button class="btn btn-primary" type="button" id="composeReview">Review</button>
+      </div>
+    </div>
+    <div id="composeStep2" hidden>
+      <div class="dlg-body">
+        <p id="composeConfirmLead"><strong></strong></p>
+        <ul class="confirm-list" id="composeConfirmList"></ul>
+        <p style="margin:14px 0 6px;font-weight:600">Message</p>
+        <div class="confirm-preview" id="composeConfirmText"></div>
+      </div>
+      <div class="dlg-foot">
+        <button class="btn" type="button" id="composeBack">Edit</button>
+        <button class="btn btn-primary" type="button" id="composeSend">Publish now</button>
+      </div>
+    </div>
+    <div id="composeStep3" hidden>
+      <div class="dlg-body"><ul class="result-list" id="composeResults"></ul></div>
+      <div class="dlg-foot"><button class="btn btn-primary" type="button" data-close>Done</button></div>
+    </div>
+  </dialog>
+
+  <!-- Confirm a change to an existing post -->
+  <dialog id="confirmDlg" aria-labelledby="confirmTitle">
+    <div class="dlg-head"><h2 id="confirmTitle"></h2></div>
+    <div class="dlg-body">
+      <p id="confirmLead"></p>
+      <div class="confirm-preview" id="confirmPreview"></div>
+      <label class="field" id="confirmLinkField" style="margin-top:14px" hidden><span>Attach to</span><select id="confirmLink"></select></label>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn" type="button" id="confirmCancel">Cancel</button>
+      <button class="btn btn-primary" type="button" id="confirmOk"></button>
+    </div>
+  </dialog>
+
+  <!-- Handoff summary -->
+  <dialog id="handoffDlg" aria-labelledby="handoffTitle">
+    <div class="dlg-head"><h2 id="handoffTitle">Handoff summary</h2><button class="btn btn-quiet" type="button" data-close>Close</button></div>
+    <div class="dlg-body">
+      <p style="margin-top:0;color:var(--muted)">Built from what's actually in Shift and Buffer right now. Paste it into GroupMe, email, or Teams.</p>
+      <textarea id="handoffText" style="min-height:300px" readonly></textarea>
+    </div>
+    <div class="dlg-foot"><button class="btn btn-primary" type="button" id="handoffCopy">Copy summary</button></div>
+  </dialog>
+
+  <!-- Settings -->
+  <dialog id="settingsDlg" aria-labelledby="settingsTitle">
+    <div class="dlg-head"><h2 id="settingsTitle">Settings</h2><button class="btn btn-quiet" type="button" data-close>Close</button></div>
+    <div class="dlg-body">
+      <label class="field"><span>Team name</span><input type="text" id="setTeamName" maxlength="80"></label>
+
+      <div class="field">
+        <span>Report link</span>
+        <small>Anyone with this link can send things to your inbox. It can't see the inbox or touch Buffer.</small>
+        <div class="copy-row"><input type="text" id="setIntakeUrl" readonly><button class="btn btn-sm" type="button" data-copy="setIntakeUrl">Copy</button></div>
+      </div>
+
+      <div class="field">
+        <span>GroupMe</span>
+        <ol class="steps">
+          <li>Go to <a href="https://dev.groupme.com/bots" target="_blank" rel="noopener">dev.groupme.com/bots</a> and create a bot in your team's group.</li>
+          <li>Paste this as the bot's callback URL:</li>
+        </ol>
+        <div class="copy-row"><input type="text" id="setCallbackUrl" readonly><button class="btn btn-sm" type="button" data-copy="setCallbackUrl">Copy</button></div>
+        <small style="margin-top:8px">3. Paste the bot ID here so Shift can confirm each report in the chat. Then anyone in the group can type <strong>/shift issue Train is down</strong>.</small>
+        <div class="copy-row"><input type="text" id="setBotId" placeholder="Bot ID" maxlength="64" autocomplete="off"><button class="btn btn-sm" type="button" id="setHello">Save &amp; test</button></div>
+        <small id="setGmStatus" role="status"></small>
+      </div>
+
+      <label class="field"><span>Words that mean the same thing</span>
+        <small>One group per line. If an issue mentions one word, Shift flags upcoming posts that mention any word in its group.</small>
+        <textarea id="setTerms" placeholder="train, railroad, railway, locomotive"></textarea>
+      </label>
+
+      <div class="field">
+        <span>Theme</span>
+        <div class="choice-row" id="setTheme">
+          <label><input type="radio" name="theme" value="system" checked> Match device</label>
+          <label><input type="radio" name="theme" value="light"> Light</label>
+          <label><input type="radio" name="theme" value="dark"> Dark</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span>Danger zone</span>
+        <div class="choice-row">
+          <button class="btn btn-sm" type="button" id="setRotate">Reset report link</button>
+          <button class="btn btn-sm" type="button" id="setDisconnect">Disconnect Buffer</button>
+        </div>
+        <small>Resetting the link breaks the old report link and the GroupMe callback until you paste the new one.</small>
+      </div>
+
+      <div class="field">
+        <span>About Shift</span>
+        <small>Shift connects what your organization knows to what your social channels are about to say. Publishing runs through Buffer; Shift never posts on its own. Built by <a href="https://bencampbell.netlify.app" target="_blank" rel="noopener">Nobody Creative</a>.</small>
+      </div>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn" type="button" data-close>Cancel</button>
+      <button class="btn btn-primary" type="button" id="setSave">Save settings</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/js/shared/connection.js"></script>
+  <script src="/js/shared/oauth.js"></script>
+  <script src="/js/match.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

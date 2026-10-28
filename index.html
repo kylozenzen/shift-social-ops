@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shift: your social team shouldn't be the last to know</title>
+  <meta name="description" content="Shift puts what your team knows next to what your Buffer schedule is about to say. Report it in GroupMe, pull the post, publish the update.">
+  <meta name="theme-color" content="#172338">
+  <link rel="icon" href="/icons/shift.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/shift-180.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="landing">
+    <div class="brand"><img class="brand-mark" src="/icons/shift.svg" alt=""><span>Shift</span></div>
+
+    <section class="landing-hero">
+      <div>
+        <h1>Your social team shouldn't be the last to know.</h1>
+        <p>The train goes down at 1:10. Your "come ride the train" post goes out at 2:00. Shift puts what your team reports right next to what Buffer is about to publish, so you catch it in time.</p>
+        <div class="cta-row" id="ctaRow">
+          <button class="btn btn-primary" type="button" id="connectBtn">Connect with Buffer</button>
+          <button class="btn" type="button" id="keyToggle">Use an API key instead</button>
+        </div>
+        <form id="keyForm" hidden style="margin-top:16px;max-width:460px">
+          <label class="field"><span>Buffer API key</span>
+            <small>Create one at <a href="https://publish.buffer.com/settings/api" target="_blank" rel="noopener">publish.buffer.com/settings/api</a>. It stays in this browser and is only sent to Buffer.</small>
+            <input type="text" id="keyInput" autocomplete="off" spellcheck="false">
+          </label>
+          <button class="btn btn-primary" type="submit">Connect</button>
+        </form>
+        <p id="connectMsg" role="status" style="font-size:15px;margin-top:14px"></p>
+      </div>
+
+      <figure class="replay" id="replay" aria-label="Example: a team member reports the train is down in GroupMe, Shift flags the 2:00 PM train post, the social manager moves it to draft and publishes an update.">
+        <div class="replay-chat" aria-hidden="true">
+          <div class="replay-chat-head">Rail &amp; Rides crew</div>
+          <div class="rp-bubble rp-1"><b>Maria</b>/shift issue! Train is down until 3pm</div>
+          <div class="rp-bubble rp-bot rp-2"><b>Shift</b>🚨 Issue S-7K2Q sent to the social team</div>
+        </div>
+        <div class="replay-board" aria-hidden="true">
+          <div class="replay-board-head">Going out today</div>
+          <ol class="rail rp-rail">
+            <li class="stop rp-sent"><div class="post">
+              <div class="post-meta"><span class="post-time">1:14 PM</span><span>Facebook</span><span class="status-pill sent">Sent</span></div>
+              <p class="post-text">Heads up: the train is closed until 3pm for a quick fix. Everything else is open!</p>
+            </div></li>
+            <li class="now-marker"><span>Now 1:12 PM</span></li>
+            <li class="stop rp-target"><div class="post">
+              <div class="post-meta"><span class="post-time">2:00 PM</span><span>Instagram</span><span class="status-pill rp-draft">Draft</span></div>
+              <span class="flag-note rp-flag">Might clash with S-7K2Q (train)</span>
+              <p class="post-text">Hop aboard! The train runs every 20 minutes this afternoon 🚂</p>
+              <span class="btn btn-sm btn-primary rp-btn">Move to draft</span>
+            </div></li>
+            <li class="stop"><div class="post">
+              <div class="post-meta"><span class="post-time">4:30 PM</span><span>Threads</span></div>
+              <p class="post-text">Keeper talk at the hippo habitat. Bring your questions!</p>
+            </div></li>
+          </ol>
+        </div>
+        <button class="btn btn-sm replay-again" type="button" id="replayBtn">Replay</button>
+      </figure>
+    </section>
+
+    <section class="flow" aria-label="How it works">
+      <div>
+        <h3>Your team reports it</h3>
+        <p>Anyone can type /shift in your GroupMe, or use a report link. No Buffer login, no new app.</p>
+      </div>
+      <div>
+        <h3>You see it against the schedule</h3>
+        <p>Every report lands next to today's and this week's Buffer posts. Posts that mention the same thing get flagged.</p>
+      </div>
+      <div>
+        <h3>You act in one place</h3>
+        <p>Move a post to draft, publish an update now, or leave a note for whoever's on next. Every action is recorded.</p>
+      </div>
+    </section>
+
+    <footer class="landing-foot">
+      <span>Shift runs on Buffer and never publishes on its own.</span>
+      <a href="https://bencampbell.netlify.app" target="_blank" rel="noopener">Built by Nobody Creative</a>
+    </footer>
+  </main>
+
+  <script src="/js/shared/connection.js"></script>
+  <script src="/js/shared/oauth.js"></script>
+  <script src="/js/connect.js"></script>
+</body>
+</html>

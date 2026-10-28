@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Report something · Shift</title>
+  <meta name="theme-color" content="#172338">
+  <link rel="icon" href="/icons/shift.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="solo">
+    <div class="solo-card">
+      <div class="brand" style="margin-bottom:18px"><img class="brand-mark" src="/icons/shift.svg" alt=""><span>Shift</span></div>
+      <div class="panel" style="padding:22px">
+        <h1 id="title" style="font-size:24px;margin:0 0 6px;letter-spacing:-.02em">Tell the social team</h1>
+        <p id="lead" style="color:var(--muted);margin:0 0 18px">Loading…</p>
+
+        <form id="form" hidden>
+          <div class="field">
+            <span>What is it?</span>
+            <div class="choice-row">
+              <label><input type="radio" name="type" value="issue" checked> Something's wrong</label>
+              <label><input type="radio" name="type" value="update"> An update</label>
+              <label><input type="radio" name="type" value="idea"> A post idea</label>
+              <label><input type="radio" name="type" value="request"> A request</label>
+            </div>
+          </div>
+          <label class="field"><span>What's going on?</span>
+            <textarea name="text" required maxlength="2000" placeholder="The train is down until at least 3pm."></textarea>
+          </label>
+          <label class="field"><span>Your name</span>
+            <input type="text" name="name" maxlength="80" autocomplete="name">
+          </label>
+          <div class="choice-row" style="margin-bottom:16px"><label><input type="checkbox" name="urgent"> This is urgent</label></div>
+          <label class="sr-only" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <p style="font-size:13px;color:var(--muted);margin:0 0 14px">Don't include private guest, medical, or HR details here.</p>
+          <button class="btn btn-primary" type="submit" id="submit" style="width:100%">Send to the social team</button>
+          <p id="err" role="alert" style="color:var(--red);margin:12px 0 0"></p>
+        </form>
+
+        <div id="done" class="report-done" hidden>
+          <div class="big" aria-hidden="true">✅</div>
+          <h2 style="margin:8px 0 4px">Sent</h2>
+          <p style="color:var(--muted);margin:0 0 18px">Reference <strong id="ref"></strong>. The social team sees it now.</p>
+          <button class="btn" type="button" id="another">Report something else</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="/js/report.js"></script>
+</body>
+</html>
