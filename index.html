@@ -13,87 +13,201 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/landing.css">
 </head>
-<body>
-  <main class="landing">
+<body class="lp">
+  <header class="lp-nav">
     <div class="brand"><img class="brand-mark" src="/icons/shift.svg" alt=""><span>Shift</span></div>
+    <a class="btn btn-sm btn-primary" href="#waitlist">Join the waitlist</a>
+  </header>
 
-    <section class="landing-hero">
-      <div>
+  <main>
+    <!-- HERO: the customer and their problem -->
+    <section class="lp-hero">
+      <div class="lp-hero-copy">
         <p class="eyebrow">Shift for Buffer</p>
         <h1>Your social team shouldn't be the last to know.</h1>
-        <p class="lede">The train went down at 1:10. The "come ride the train" post goes out at 2:00. Somebody on the ground knew. Shift makes sure the person posting knows too, and shows the two side by side before anything goes out.</p>
-        <a class="btn btn-primary btn-lg" href="#waitlist">Join the waitlist</a>
+        <p class="lede">Your team sees the problem first. Your Buffer schedule doesn't. Shift puts both in one place, so the post that's about to go out gets caught.</p>
+        <div class="lp-cta-row">
+          <a class="btn btn-primary btn-lg" href="#waitlist">Join the waitlist</a>
+          <a class="lp-text-link" href="#how">See how it works</a>
+        </div>
       </div>
 
-      <div class="example" aria-label="Example of a report flagged against a scheduled post">
-        <div class="example-chat">
-          <div class="example-label">In your team's chat</div>
-          <div class="bubble-msg"><b>Maria, Guest Services</b>/shift issue! Train is down until 3pm</div>
-          <div class="bubble-msg bot"><b>Shift</b>Issue S-7K2Q sent to the social team</div>
-        </div>
-        <div class="example-board">
-          <div class="example-label">Today's Buffer schedule</div>
-          <div class="example-post sent"><span class="post-time">1:14 PM</span> Facebook · Sent<br>Heads up: the train is closed until 3pm for a quick fix.</div>
-          <div class="example-post flagged">
-            <span class="post-time">2:00 PM</span> Instagram · Draft<br>
-            <span class="flag-note">Might clash with S-7K2Q (train)</span><br>
-            "Hop aboard! The train runs every 20 minutes this afternoon."
-            <span class="example-action">Move to draft</span>
+      <!-- MOCKUP: the dashboard with a flagged post -->
+      <div class="lp-mock lp-mock-hero" aria-label="Shift dashboard showing a reported train outage next to a 2:00 PM scheduled post, flagged as a possible clash">
+        <div class="lp-mock-bar"><span></span><span></span><span></span><b>Shift · Rail &amp; Rides</b></div>
+        <div class="lp-mock-body">
+          <div class="lp-mock-col">
+            <div class="panel-head"><h2>Inbox</h2><span class="count">1 open</span></div>
+            <div class="item">
+              <div class="item-top"><span class="type type-issue">Issue</span><span class="urgent">URGENT</span><span class="ref">S-7K2Q</span><span>1:10 PM · Maria</span></div>
+              <p class="item-text">Train is down until 3pm, mechanical</p>
+              <div class="impact"><strong>Might clash with:</strong> <span class="impact-post">2:00 PM Instagram post</span></div>
+            </div>
+          </div>
+          <div class="lp-mock-col">
+            <div class="panel-head"><h2>Going out today</h2></div>
+            <ol class="rail">
+              <li class="stop past"><div class="post"><div class="post-meta"><span class="post-time">1:14 PM</span><span>Facebook</span><span class="status-pill sent">Sent</span></div><p class="post-text">Everything's open today, come see the animals!</p></div></li>
+              <li class="now-marker"><span>Now 1:12 PM</span></li>
+              <li class="stop flagged"><div class="post"><div class="post-meta"><span class="post-time">2:00 PM</span><span>Instagram</span></div><span class="flag-note">Might clash with S-7K2Q (train)</span><p class="post-text">Hop aboard! The train runs every 20 minutes this afternoon.</p><div class="post-actions"><span class="btn btn-sm btn-primary">Move to draft</span></div></div></li>
+            </ol>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>How it works</h2>
-      <ol class="steps-row">
-        <li><b>Someone reports it.</b> Type <code>/shift</code> in the group chat your team already uses, or send a report link. No Buffer login for them.</li>
-        <li><b>You see the clash.</b> The report sits beside today's and this week's posts. Anything that mentions the same thing gets flagged.</li>
-        <li><b>You act in one place.</b> Move a post to draft, post an update to the channels you pick, or leave a note for whoever's on next.</li>
-      </ol>
+    <!-- PROBLEM: the gap between what staff know and what's scheduled -->
+    <section class="lp-section lp-problem">
+      <h2>It's 2:00. Your team knew at 1:10.</h2>
+      <p class="lp-sub">The post goes out anyway, because nobody told the person who schedules posts. Then the guest comes to the train, and the post is wrong.</p>
+      <!-- MOCKUP: the timeline of the mistake -->
+      <div class="lp-timeline">
+        <div class="lp-tl-step"><span class="lp-tl-time">1:10 PM</span><b>Train goes down</b><p>Maria tells the group chat. Staff know.</p></div>
+        <div class="lp-tl-step"><span class="lp-tl-time">1:14 PM</span><b>Post goes out</b><p>Facebook says "everything's open." The social lead didn't see the message.</p></div>
+        <div class="lp-tl-step lp-tl-bad"><span class="lp-tl-time">2:00 PM</span><b>"Hop aboard!" goes out</b><p>The scheduled train post publishes. Guests show up to a closed ride.</p></div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>What it does for you</h2>
-      <div class="value-grid">
-        <article class="value">
-          <h3>Catch it before it publishes</h3>
-          <p>A report that matches a scheduled post shows up next to that post, labeled "might clash," so you decide what happens to it.</p>
+    <!-- GUIDE: Shift as the guide, with the authority behind it -->
+    <section class="lp-section lp-guide">
+      <div class="lp-guide-inner">
+        <p class="lp-kicker">Shift connects the group chat to the schedule</p>
+        <h2>Your team reports it. You see it next to the schedule. You decide.</h2>
+        <p>Shift doesn't replace your chat or your scheduler. It reads what your team already reports, lines it up with what Buffer is about to publish, and makes sure the right person sees it while there's still time.</p>
+        <p class="lp-credit">Built by a social lead who has run posts for a zoo, and who has been on the other end of "why is this still scheduled?"</p>
+      </div>
+    </section>
+
+    <!-- PLAN: three simple steps, each with a mockup -->
+    <section class="lp-section" id="how">
+      <h2>How it works</h2>
+      <div class="lp-steps">
+        <article class="lp-step">
+          <span class="lp-step-n">1</span>
+          <h3>Someone reports it in chat</h3>
+          <p>Anyone on your team types <code>/shift</code> in the group they already use. Guests and staff without GroupMe can use a report link.</p>
+          <!-- MOCKUP: GroupMe chat with the bot reply -->
+          <div class="lp-chat">
+            <div class="lp-chat-head">Rail &amp; Rides crew</div>
+            <div class="lp-msg"><b>Maria</b>/shift issue! Train is down until 3pm</div>
+            <div class="lp-msg lp-msg-bot"><b>Shift</b>🚨 Issue S-7K2Q sent to the social team</div>
+          </div>
         </article>
-        <article class="value">
-          <h3>Buffer stays in charge</h3>
-          <p>Buffer is still where your posts live. Shift never publishes on its own, and every public action waits for you to confirm it.</p>
+        <article class="lp-step">
+          <span class="lp-step-n">2</span>
+          <h3>You see the clash</h3>
+          <p>The report sits beside today's and this week's posts. Anything that mentions the same thing gets flagged as "might clash," so you decide what to do.</p>
+          <!-- MOCKUP: the flagged post -->
+          <div class="lp-card lp-card-flag">
+            <div class="post-meta"><span class="post-time">2:00 PM</span><span>Instagram · Scheduled</span></div>
+            <span class="flag-note">Might clash with S-7K2Q (train)</span>
+            <p class="post-text">Hop aboard! The train runs every 20 minutes this afternoon.</p>
+          </div>
         </article>
-        <article class="value">
-          <h3>Put it back when it's fixed</h3>
-          <p>Move a post to draft and restore it later at its original time. Nobody has to rebuild the schedule by hand.</p>
-        </article>
-        <article class="value">
-          <h3>Handoffs that don't need a phone tree</h3>
-          <p>Leave notes for the next shift, keep a log of what happened, and copy a summary built only from recorded actions.</p>
+        <article class="lp-step">
+          <span class="lp-step-n">3</span>
+          <h3>You act in one place</h3>
+          <p>Move the post to draft, post an update to the channels you pick, or leave a note for the next shift. Shift asks you to confirm every public action.</p>
+          <!-- MOCKUP: confirm dialog -->
+          <div class="lp-card lp-card-confirm">
+            <div class="lp-confirm-title">Post an update</div>
+            <div class="lp-confirm-chan"><span class="lp-tick">✓</span> Facebook</div>
+            <div class="lp-confirm-chan"><span class="lp-tick">✓</span> Threads</div>
+            <div class="lp-confirm-text">Heads up: the train is closed until 3pm for a quick fix. Everything else is open!</div>
+            <div class="lp-confirm-btns"><span class="btn btn-sm">Cancel</span><span class="btn btn-sm btn-primary">Publish now</span></div>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="section">
+    <!-- VALUE PROPS: each with a small product mockup -->
+    <section class="lp-section">
+      <h2>What you get</h2>
+      <div class="lp-values">
+        <article class="lp-value">
+          <div class="lp-value-text">
+            <h3>Catch it before it publishes</h3>
+            <p>Reports sit next to the posts they affect, labeled "might clash," so nothing slips through while you're busy with the next thing.</p>
+          </div>
+          <div class="lp-card lp-card-notes">
+            <div class="note"><div class="note-meta"><b>Mo</b><span>Morning shift · 9:15 AM</span></div><p>Train out until 3. Hold the 2 PM post.</p></div>
+            <div class="note"><div class="note-meta"><b>Dana</b><span>Afternoon · 1:40 PM</span></div><p>Put the train post back at 2:00 once it's running.</p></div>
+          </div>
+        </article>
+        <article class="lp-value lp-value-flip">
+          <div class="lp-value-text">
+            <h3>Buffer stays in charge</h3>
+            <p>Your posts stay in Buffer. Shift never publishes on its own. Every public action waits for a person to confirm it.</p>
+          </div>
+          <div class="lp-card lp-card-confirm">
+            <div class="lp-confirm-title">Confirm before publishing</div>
+            <div class="lp-confirm-text">Publish to Facebook and Threads now? This can't be undone.</div>
+            <div class="lp-confirm-btns"><span class="btn btn-sm">Not yet</span><span class="btn btn-sm btn-primary">Yes, publish</span></div>
+          </div>
+        </article>
+        <article class="lp-value">
+          <div class="lp-value-text">
+            <h3>Put it back when it's fixed</h3>
+            <p>Move a post to draft and restore it later at its original time. Nobody has to rebuild the schedule by hand.</p>
+          </div>
+          <div class="lp-card lp-card-restore">
+            <div class="post-meta"><span class="post-time">2:00 PM</span><span>Instagram</span><span class="status-pill">Draft</span></div>
+            <p class="post-text">Hop aboard! The train runs every 20 minutes this afternoon.</p>
+            <div class="post-actions"><span class="btn btn-sm btn-primary">Put back at 2:00 PM</span></div>
+          </div>
+        </article>
+        <article class="lp-value lp-value-flip">
+          <div class="lp-value-text">
+            <h3>Handoffs that don't need a phone tree</h3>
+            <p>Notes for the next shift, a log of what happened, and a copyable summary built only from actions that were recorded.</p>
+          </div>
+          <div class="lp-card lp-card-log">
+            <ul class="activity">
+              <li><time>9:15</time><span>Mo moved "2 PM train post" to draft</span></li>
+              <li><time>10:02</time><span>Issue S-7K2Q marked resolved</span></li>
+              <li><time>10:04</time><span>Mo posted an update to Facebook</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- USE CASES: mockups for each kind of team -->
+    <section class="lp-section">
       <h2>Built for two kinds of teams</h2>
-      <div class="usecase-grid">
-        <article class="usecase">
-          <p class="usecase-tag">Zoos, museums and attractions</p>
+      <div class="lp-usecases">
+        <article class="lp-usecase">
+          <p class="lp-tag">Zoos, museums and attractions</p>
           <h3>Your staff know first. Your posts should catch up.</h3>
-          <p>A ride goes down, a gate closes early, a keeper talk moves, a lost child is found. Front-line staff report it from the group they already use, and Shift puts it beside the post that's about to go out.</p>
-          <ul class="usecase-list">
-            <li>Mark urgent reports with <code>!</code> and they go to the top</li>
+          <p>A ride goes down, a gate closes early, a keeper talk moves. Front-line staff report it from the group they already use, and the post that's about to go out gets flagged.</p>
+          <!-- MOCKUP: zoo -->
+          <div class="lp-card lp-card-zoo">
+            <div class="lp-chat-head">Guest Services crew</div>
+            <div class="lp-msg"><b>Jordan</b>/shift issue! Lion house closed for cleaning until 2</div>
+            <div class="lp-msg"><b>Priya</b>/shift update Keeper talk at the hippo habitat moved to 4:30</div>
+            <div class="lp-msg lp-msg-bot"><b>Shift</b>2 reports saved. 1 might clash with a post at 1:45 PM.</div>
+          </div>
+          <ul class="lp-list">
+            <li>Mark urgent reports with <code>!</code>, and they go to the top</li>
             <li>Staff without GroupMe can use a report link</li>
             <li>Notes carry across shifts, so the next person knows what's still open</li>
           </ul>
         </article>
-        <article class="usecase">
-          <p class="usecase-tag">SaaS teams with one social person</p>
+
+        <article class="lp-usecase">
+          <p class="lp-tag">SaaS teams with one social person</p>
           <h3>Engineering knows about the outage. The feed should too.</h3>
-          <p>When there's an incident or a bug everyone is talking about, the people who know post it in chat. Shift shows it next to the scheduled product posts, so the social lead can hold, reword or send a status update without checking five tools.</p>
-          <ul class="usecase-list">
+          <p>When there's an incident, the people who know post it in chat. Shift puts it next to the scheduled product posts, so the social lead can hold, reword or send a status update without checking five tools.</p>
+          <!-- MOCKUP: SaaS -->
+          <div class="lp-card lp-card-saas">
+            <div class="lp-chat-head">Eng · #incidents</div>
+            <div class="lp-msg"><b>Sam, Eng</b>/shift issue! Checkout failing for EU customers, rolling back</div>
+            <div class="lp-msg lp-msg-bot"><b>Shift</b>Issue S-4MNR sent. 3 scheduled posts mention checkout.</div>
+            <div class="post-meta lp-saas-post"><span class="post-time">11:00 AM</span><span>LinkedIn · Scheduled</span><span class="flag-note">Might clash with S-4MNR</span></div>
+          </div>
+          <ul class="lp-list">
             <li>Outages and bugs reported straight from chat</li>
             <li>Scheduled product posts checked against what's broken right now</li>
             <li>A handoff summary for whoever covers the next time zone</li>
@@ -102,10 +216,23 @@
       </div>
     </section>
 
-    <section class="section waitlist-section" id="waitlist" aria-labelledby="waitlist-heading">
-      <div class="waitlist-intro">
+    <!-- SUCCESS / FAILURE: the stakes -->
+    <section class="lp-section lp-stakes">
+      <div class="lp-stake lp-stake-bad">
+        <h3>Without Shift</h3>
+        <p>The wrong post goes out. Guests show up to a closed ride, and someone spends the afternoon explaining it. Next time, the team stops telling the social lead anything.</p>
+      </div>
+      <div class="lp-stake lp-stake-good">
+        <h3>With Shift</h3>
+        <p>The clash shows up at 1:12. The post moves to draft in one tap, an update goes to the channels you pick, and the note for the next shift is already written.</p>
+      </div>
+    </section>
+
+    <!-- CTA: waitlist -->
+    <section class="lp-section lp-cta" id="waitlist" aria-labelledby="waitlist-heading">
+      <div class="lp-cta-intro">
         <h2 id="waitlist-heading">Get on the list.</h2>
-        <p>Shift is in build now. We'll email you when it opens, and tell you first if we add a team type we don't cover yet.</p>
+        <p>Shift is in build now. We'll email you when it opens, and we'll tell you first if we add a kind of team we don't cover yet.</p>
       </div>
       <form class="waitlist-form" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" id="waitForm">
         <input type="hidden" name="form-name" value="waitlist">
@@ -130,12 +257,12 @@
         <p class="signup-note">No spam. One email when Shift opens.</p>
       </form>
     </section>
-
-    <footer class="landing-foot">
-      <span>Shift runs on Buffer and never publishes on its own.</span>
-      <a href="https://bencampbell.netlify.app" target="_blank" rel="noopener">Built by Nobody Creative</a>
-    </footer>
   </main>
+
+  <footer class="landing-foot">
+    <span>Shift runs on Buffer and never publishes on its own.</span>
+    <a href="https://bencampbell.netlify.app" target="_blank" rel="noopener">Built by Nobody Creative</a>
+  </footer>
   <script src="/js/waitlist.js"></script>
 </body>
 </html>
