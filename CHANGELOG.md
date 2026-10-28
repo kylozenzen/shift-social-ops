@@ -33,6 +33,6 @@ Git tag: `pre-kickoff-2026-10-15`
 
 _Add each feature here as it ships, with the date._
 
-- **Oct 28, 2026. Landing page rewritten as a sign-up page.** New hero with a "Sign up with Buffer" call to action, a bottom sign-up band, four value props, a features section and two use cases (places with live operations; SaaS teams with a social lead). The original connect-first page and its animated replay were pre-kickoff work and are kept on the page. The connect logic (OAuth and API key) is unchanged apart from wiring up the second button.
+- **Oct 28, 2026. Landing page rewritten as a sign-up page.** New hero with a "Sign up with Buffer" call to action, a bottom sign-up band, four value props, a features section and two use cases (places with live operations; SaaS teams with a social lead). The original connect-first page and its animated replay were pre-kickoff work; the replay was removed from the landing page in the waitlist change below. The connect logic (OAuth and API key) in `js/connect.js` is unchanged.
 - **Oct 28, 2026. Landing page gated to a waitlist.** The public page now has one job: a waitlist form (Netlify Forms, matching Take With Words) and a thanks page. The Buffer sign-up and API key options were removed from the landing page. The app itself is not yet gated.
 - **Oct 28, 2026. Landing styles.** Added layout and styles for the new sections in `css/app.css`.
