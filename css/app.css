@@ -450,3 +450,30 @@ dialog::backdrop { background: rgba(10, 17, 29, .55); }
 .waitlist-form .field { margin-bottom: 0; }
 .waitlist-form .btn-lg { width: 100%; }
 @media (max-width: 760px) { .waitlist-form { padding: 22px; } }
+
+/* Landing: example, steps, waitlist section */
+.example { background: var(--ink); color: #E8EEF7; border-radius: 18px; padding: 20px; display: grid; gap: 16px; font-size: 14px; align-self: center; }
+.example-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--sky); margin-bottom: 8px; }
+.example-chat { display: grid; gap: 8px; }
+.bubble-msg { background: #22324E; padding: 10px 12px; border-radius: 12px; max-width: 92%; }
+.bubble-msg b { display: block; color: var(--sky); font-size: 12px; margin-bottom: 2px; }
+.bubble-msg.bot { justify-self: end; background: #0F3A57; }
+.example-board { display: grid; gap: 8px; }
+.example-post { background: #1B2A44; border-radius: 12px; padding: 12px; line-height: 1.5; }
+.example-post .post-time { font-weight: 700; color: #fff; }
+.example-post.sent { opacity: .7; }
+.example-post.flagged { background: #3A2E12; border: 1px solid #C98A1B; }
+.example-post .flag-note { color: #FFC857; font-weight: 700; }
+.example-action { display: inline-block; margin-top: 8px; background: var(--sky); color: #0B1A2C; border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: 13px; }
+.steps-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
+.steps-row li { counter-increment: step; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.steps-row li::before { content: counter(step); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+.steps-row b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 6px; }
+.steps-row code, .usecase-list code { font-size: 13px; background: var(--paper); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+.waitlist-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.waitlist-intro h2 { margin-bottom: 12px; }
+.waitlist-intro p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.5; max-width: 40ch; }
+@media (max-width: 760px) {
+  .steps-row { grid-template-columns: 1fr; }
+  .waitlist-section { grid-template-columns: 1fr; gap: 24px; }
+}
