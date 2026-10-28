@@ -18,13 +18,14 @@
 
   if (!cfg.bufferClientId) {
     $('connectBtn').hidden = true;
+    $('connectBtnBottom').hidden = true;
     $('keyToggle').hidden = true;
     $('keyForm').hidden = false;
   }
 
-  $('connectBtn').addEventListener('click', async () => {
+  const startOAuth = async (btn) => {
     try {
-      $('connectBtn').disabled = true;
+      btn.disabled = true;
       await BufferOAuth.startAuthorization({
         prefix: 'shift',
         clientId: cfg.bufferClientId,
@@ -33,10 +34,12 @@
         returnTo: '/app',
       });
     } catch (err) {
-      $('connectBtn').disabled = false;
+      btn.disabled = false;
       msg(err.message, true);
     }
-  });
+  };
+  $('connectBtn').addEventListener('click', () => startOAuth($('connectBtn')));
+  $('connectBtnBottom').addEventListener('click', () => startOAuth($('connectBtnBottom')));
 
   $('keyToggle').addEventListener('click', () => {
     $('keyForm').hidden = !$('keyForm').hidden;

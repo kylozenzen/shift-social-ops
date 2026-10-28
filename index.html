@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Shift: your social team shouldn't be the last to know</title>
-  <meta name="description" content="Shift puts what your team knows next to what your Buffer schedule is about to say. Report it in GroupMe, pull the post, publish the update.">
+  <meta name="description" content="Shift puts what your team knows next to what your Buffer schedule is about to publish. Report it in GroupMe, pull the post, publish the update. Sign up with Buffer to start.">
   <meta name="theme-color" content="#172338">
   <link rel="icon" href="/icons/shift.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icons/shift-180.png">
@@ -20,12 +20,14 @@
 
     <section class="landing-hero">
       <div>
+        <p class="eyebrow">Shift for Buffer</p>
         <h1>Your social team shouldn't be the last to know.</h1>
-        <p>The train goes down at 1:10. Your "come ride the train" post goes out at 2:00. Shift puts what your team reports right next to what Buffer is about to publish, so you catch it in time.</p>
+        <p class="lede">When something changes on the ground or in the product, your team hears about it in chat. Shift puts that report right next to what Buffer is about to publish, so you can pull or update the post before it goes out.</p>
         <div class="cta-row" id="ctaRow">
-          <button class="btn btn-primary" type="button" id="connectBtn">Connect with Buffer</button>
-          <button class="btn" type="button" id="keyToggle">Use an API key instead</button>
+          <button class="btn btn-primary btn-lg" type="button" id="connectBtn">Sign up with Buffer</button>
+          <button class="btn btn-lg" type="button" id="keyToggle">Use an API key instead</button>
         </div>
+        <p class="signup-note">Free to start. Sign in with the Buffer account you already use. Shift never publishes on its own.</p>
         <form id="keyForm" hidden style="margin-top:16px;max-width:460px">
           <label class="field"><span>Buffer API key</span>
             <small>Create one at <a href="https://publish.buffer.com/settings/api" target="_blank" rel="noopener">publish.buffer.com/settings/api</a>. It stays in this browser and is only sent to Buffer.</small>
@@ -66,18 +68,81 @@
       </figure>
     </section>
 
-    <section class="flow" aria-label="How it works">
-      <div>
-        <h3>Your team reports it</h3>
-        <p>Anyone can type /shift in your GroupMe, or use a report link. No Buffer login, no new app.</p>
+    <section class="section" aria-labelledby="why-heading">
+      <h2 id="why-heading">Why teams use it</h2>
+      <div class="value-grid">
+        <article class="value">
+          <h3>Catch it before it publishes</h3>
+          <p>A report that mentions the same thing as a scheduled post gets flagged next to that post. You see the clash while there's still time to fix it.</p>
+        </article>
+        <article class="value">
+          <h3>Act in one place</h3>
+          <p>Move a post to draft, publish an update to the channels you pick, or save an idea to Buffer Ideas. Shift asks you to confirm each public action first.</p>
+        </article>
+        <article class="value">
+          <h3>Put it back when it's fixed</h3>
+          <p>Moved posts return to their original time when you restore them, so the schedule you planned doesn't have to be rebuilt by hand.</p>
+        </article>
+        <article class="value">
+          <h3>Hand off without losing context</h3>
+          <p>Leave notes for whoever is on next, keep a log of what happened, and copy a summary built only from actions that were actually recorded.</p>
+        </article>
       </div>
-      <div>
-        <h3>You see it against the schedule</h3>
-        <p>Every report lands next to today's and this week's Buffer posts. Posts that mention the same thing get flagged.</p>
+    </section>
+
+    <section class="section" aria-labelledby="features-heading">
+      <h2 id="features-heading">What's in it</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Reports from chat or a link</h3>
+          <p>Staff type <code>/shift issue</code>, <code>/shift update</code>, <code>/shift idea</code> or <code>/shift request</code> in GroupMe. People without GroupMe use a report link. Add <code>!</code> to mark something urgent.</p>
+        </div>
+        <div class="feature">
+          <h3>Today's schedule on a timeline</h3>
+          <p>Reports sit beside today's Buffer posts on a timeline with a live "now" marker, followed by the rest of the week.</p>
+        </div>
+        <div class="feature">
+          <h3>Clash flags that learn your words</h3>
+          <p>Matching is keyword based, not AI. Teach it that "railroad" means "train" and it will flag both. Flags are labeled "might clash," so you make the call.</p>
+        </div>
+        <div class="feature">
+          <h3>Setup that tests itself</h3>
+          <p>The first-run card runs a sample report against your real next post, so you see the flag before you rely on it. GroupMe setup includes a Save &amp; test button that says hello in the group.</p>
+        </div>
       </div>
-      <div>
-        <h3>You act in one place</h3>
-        <p>Move a post to draft, publish an update now, or leave a note for whoever's on next. Every action is recorded.</p>
+    </section>
+
+    <section class="section" aria-labelledby="usecases-heading">
+      <h2 id="usecases-heading">Built for two kinds of teams</h2>
+      <div class="usecase-grid">
+        <article class="usecase">
+          <p class="usecase-tag">Places with live operations</p>
+          <h3>Zoos, attractions, venues and nonprofits</h3>
+          <p>Your staff know what's happening on the ground before your social team does: a ride down, a closed gate, a lost child, a keeper talk moved. Shift gets that to the person who posts, and it sits next to the post that's about to go out.</p>
+          <ul class="usecase-list">
+            <li>Front-line staff report from the group they already use</li>
+            <li>Urgent reports are marked and sorted to the top</li>
+            <li>Notes carry across shifts, so the next person knows what's still open</li>
+          </ul>
+        </article>
+        <article class="usecase">
+          <p class="usecase-tag">SaaS teams with a social lead</p>
+          <h3>Product companies with one person running social</h3>
+          <p>When there's an incident, an outage or a bug everyone is talking about, engineering and support post it in chat. Shift shows it beside the scheduled posts, so the social lead can hold, reword or publish a status update without digging through five tools.</p>
+          <ul class="usecase-list">
+            <li>Incidents and outages reported straight from chat</li>
+            <li>Scheduled product posts checked against what's broken right now</li>
+            <li>A handoff summary for whoever covers the next shift or time zone</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Start with the Buffer account you have.</h2>
+      <p>Sign up with Buffer to connect your workspace. Your Buffer login is your Shift login, and each Buffer organization is its own workspace.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary btn-lg" type="button" id="connectBtnBottom">Sign up with Buffer</button>
       </div>
     </section>
 

@@ -414,3 +414,28 @@ dialog::backdrop { background: rgba(10, 17, 29, .55); }
   @keyframes freshIn { 0% { background: rgba(143,213,255,.45); transform: translateY(-4px); } 25% { transform: none; } 100% { background: transparent; } }
 }
 @media (prefers-reduced-motion: reduce) { .item.fresh { background: rgba(143,213,255,.2); } }
+
+/* Landing: sign-up hero, value props, features, use cases */
+.landing .eyebrow { margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sky-deep); }
+.landing .lede { font-size: 18px; color: var(--muted); max-width: 46ch; margin: 0 0 24px; }
+.landing .btn-lg { min-height: 48px; padding: 0 20px; font-size: 16px; }
+.landing .signup-note { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.landing .section { padding: 40px 0 8px; }
+.landing .section h2 { font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -.02em; line-height: 1.15; margin: 0 0 22px; }
+.value-grid, .feature-grid, .usecase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.value, .feature, .usecase { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; }
+.value h3, .feature h3, .usecase h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -.01em; }
+.value p, .feature p, .usecase p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.feature code { font-size: 13px; background: var(--paper); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+.usecase-tag { font-size: 12px !important; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--sky-deep) !important; margin: 0 0 10px !important; }
+.usecase-list { margin: 14px 0 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink); font-size: 15px; }
+.cta-band { margin-top: 44px; padding: 40px 32px; border-radius: var(--radius-lg); background: var(--ink); color: var(--paper); text-align: center; }
+.cta-band h2 { margin: 0 0 10px; font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -.02em; }
+.cta-band p { margin: 0 auto 22px; max-width: 52ch; color: #C9D4E5; }
+.cta-band .cta-row { justify-content: center; }
+.cta-band .btn-primary { background: var(--sky); border-color: var(--sky); color: #0B1A2C; }
+@media (max-width: 760px) {
+  .landing-hero { grid-template-columns: 1fr; gap: 28px; padding: 28px 0 24px; }
+  .value-grid, .feature-grid, .usecase-grid { grid-template-columns: 1fr; }
+  .cta-band { padding: 32px 20px; }
+}
